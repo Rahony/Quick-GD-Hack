@@ -6,7 +6,7 @@ import gdrpc
 from time import sleep
 
 #Aqui você vai inserir o nome do processo do seu Geometry Dash
-executave = "XGDPS"
+executave = "geometrydash"
 
 
 memory = memory.get_memory(name=executave+".exe") #You can change the name to your GDPS ;)
