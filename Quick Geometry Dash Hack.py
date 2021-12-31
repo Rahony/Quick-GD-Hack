@@ -3,15 +3,21 @@ from gd import memory
 import gd as gd
 import keyboard
 import gdrpc
+from time import sleep
 
-memory = memory.get_memory()
+#Aqui você vai inserir o nome do processo do seu Geometry Dash
+executave = "XGDPS"
+
+
+memory = memory.get_memory(name=executave+".exe") #You can change the name to your GDPS ;)
 client = gd.Client()
 get_speed = memory.get_speed()
 
+sg.popup("Pelo que foi visto, você está usando uma versão não oficial do GeometryDash\nalguns bugs podem vir a acontecer, e nós não temos nenhum suporte sobre isso\nque fique avisado",title="Aviso") if executave != "geometrydash.exe" else print("Está tudo certo :)")
 
 class TelaPython():
     def __init__(self):
-        sg.theme('Default')
+        sg.theme('DarkRed')
 
         layout = [
             [sg.Text("meu nome é Rahony :3", justification='center', size=(70, 1))],
@@ -36,7 +42,7 @@ class TelaPython():
              sg.Text("Mostra a portentagem precisa do nível")],
             [sg.CBox("Copiar Nível", size=(20, 0), key='levelCopy'),
              sg.Text("Permite Copiar qualquer nível")],
-            [sg.Button('atualizar cheats', size=(40, 1))]
+            [sg.Button('atualizar cheats', size=(60, 1))]
 
         ]
         layout2 = [
@@ -49,8 +55,8 @@ class TelaPython():
             [sg.Button("ativar cheats")]
         ]
 
-        self.janela = sg.Window("Mega Hack V7 fodase", layout, size=(500, 400))
-        self.miscelanos = sg.Window("Mega Hack V7 Misc", layout2)
+        self.janela = sg.Window("Quick GD Hack v0.0.3", layout, size=(500, 400))
+        self.miscelanos = sg.Window("Quick GD Hack Miscelanos", layout2, finalize=False)
 
     def Iniciar(self):
         while True:
@@ -127,29 +133,29 @@ class TelaPython():
                 pmusicaoff
 
         # coisas da barra MISC
-            if self.event == ('misc'):
-                sg.popup(
-                    "os misc estão desativados por conter vários bugs, desculpe :c")
+            # if self.event == ('misc'):
             #     self.event2, self.values2 = self.miscelanos.read()
             #     plataforma = self.values2['plataformauwu']
-            # #modo plataforma
-            #     if plataforma == True:
-            #         if keyboard.is_pressed ("left"):
-            #             set_speed = memory.set_speed_value(-1.0)
-            #         elif keyboard.is_pressed ("right"):
-            #             set_speed = memory.set_speed_value(1.0)
-            #         else:
-            #             velocidade = 0.0
-            #             set_speed = memory.set_speed_value(velocidade)
+            #     if event2 == sg.WIN_CLOSED:
+            #         miscelanos.hide
+            #modo plataforma
+                # if plataforma == True:
+                #     if keyboard.is_pressed ("left"):
+                #         set_speed = memory.set_speed_value(-1.0)
+                #     elif keyboard.is_pressed ("right"):
+                #         set_speed = memory.set_speed_value(1.0)
+                #     else:
+                #         velocidade = 0.0
+                #         set_speed = memory.set_speed_value(velocidade)
 
-            #         if keyboard.is_pressed ("1"):
-            #             set_gravity = memory.set_gravity(gravity=1.0)
-            #         elif keyboard.is_pressed("2"):
-            #             set_gravity = memory.set_gravity(gravity=-1.0)
-            #     else:
-            #         pass
+                #     if keyboard.is_pressed ("1"):
+                #         set_gravity = memory.set_gravity(gravity=1.0)
+                #     elif keyboard.is_pressed("2"):
+                #         set_gravity = memory.set_gravity(gravity=-1.0)
+                # else:
+                #     pass
 
-        # comando do ping do servidor do gd
+        # comando das informações do usuário
             if self.event == ('user info'):
                 nome = gd.Level.name
                 sg.popup(f"nome: {nome}")
